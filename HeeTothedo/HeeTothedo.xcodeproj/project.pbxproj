@@ -17,6 +17,7 @@
 		05B5AE1F286976CB0099680D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 05B5AE1E286976CB0099680D /* FSCalendar */; };
 		05B5AE232869C4C20099680D /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 05B5AE222869C4C20099680D /* Then */; };
 		05B5AE262869C6610099680D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 05B5AE252869C6610099680D /* SnapKit */; };
+		05C9F66C286B1812002EC441 /* TodoTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9F66B286B1812002EC441 /* TodoTableViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		05B5AE1428693A590099680D /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		05B5AE19286955670099680D /* TodoTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTaskModel.swift; sourceTree = "<group>"; };
 		05B5AE1B286958C90099680D /* TodoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableCell.swift; sourceTree = "<group>"; };
+		05C9F66B286B1812002EC441 /* TodoTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		05B5AE1728693BC40099680D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				05C9F66B286B1812002EC441 /* TodoTableViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				05B5AE1528693A590099680D /* TodoViewController.swift in Sources */,
 				05B5AE03286939E50099680D /* SceneDelegate.swift in Sources */,
 				05B5AE1C286958C90099680D /* TodoTableCell.swift in Sources */,
+				05C9F66C286B1812002EC441 /* TodoTableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
