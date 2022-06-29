@@ -16,6 +16,11 @@ class TodoViewController: UIViewController{
     
     let dateFormatter = DateFormatter()
     
+    let todoTable = UITableView()
+    
+    var todoItem: [TodoTask] = []
+    
+    
     
     override func viewDidLoad() {
         super .viewDidLoad()

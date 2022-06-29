@@ -9,6 +9,7 @@ import UIKit
 
 class TodoTableCell:UITableViewCell {
     
+    static let cellId = "CellId"
     
     
 }
