@@ -11,5 +11,6 @@ class TodoTableCell:UITableViewCell {
     
     static let cellId = "CellId"
     
+    let todoTitle = UILabel()
     
 }

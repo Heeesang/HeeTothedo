@@ -33,6 +33,7 @@ class TodoViewController: UIViewController{
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         view.addSubview(calendar)
+        view.addSubview(todoTable)
         setCalendarLayout()
         
         
@@ -46,6 +47,15 @@ class TodoViewController: UIViewController{
             $0.centerX.equalToSuperview()
         }
     }
+    
+    func setTableViewLayout(){
+        todoTable.snp.makeConstraints{
+            $0.top.equalTo(calendar.snp.bottom)
+            
+            
+            
+        }
+    }
 }
 
 extension TodoViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
@@ -56,5 +66,20 @@ extension TodoViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     // 날짜 선택 해제 시 콜백 메소드
     public func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 해제됨")
+    }
+}
+
+extension TodoViewController:UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return todoItem.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = todoTable.dequeueReusableCell(withIdentifier: TodoTableCell.cellId, for: indexPath) as! TodoTableCell
+        
+        cell.todoTitle.text = todoItem[indexPath.row].title
+     
+        return cell
     }
 }
