@@ -11,6 +11,6 @@ struct TodoTask{
     
     var id = UUID()
     var title: String
-    var done: Bool
+    var done: Bool = false
     
 }

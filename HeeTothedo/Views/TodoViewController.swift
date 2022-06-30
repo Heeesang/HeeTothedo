@@ -16,9 +16,9 @@ class TodoViewController: UIViewController{
     
     let dateFormatter = DateFormatter()
     
-    let todoTable = UITableView()
+    let todoTable:UITableView = UITableView()
     
-    var todoItem: [TodoTask] = []
+    var todoItem: [TodoTask] = [TodoTask(title: "잠 자기")]
     
     
     
@@ -29,13 +29,16 @@ class TodoViewController: UIViewController{
         
         calendar.delegate = self
         calendar.dataSource = self
+        todoTable.delegate = self
+        todoTable.dataSource = self
+        todoTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         view.addSubview(calendar)
         view.addSubview(todoTable)
         setCalendarLayout()
-        
+        setTableViewLayout()
         
     }
     
@@ -51,7 +54,7 @@ class TodoViewController: UIViewController{
     func setTableViewLayout(){
         todoTable.snp.makeConstraints{
             $0.top.equalTo(calendar.snp.bottom)
-            
+            $0.height.width.equalToSuperview()
             
             
         }
@@ -70,16 +73,27 @@ extension TodoViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
 }
 
 extension TodoViewController:UITableViewDelegate,UITableViewDataSource{
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoItem.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = todoTable.dequeueReusableCell(withIdentifier: TodoTableCell.cellId, for: indexPath) as! TodoTableCell
-        
-        cell.todoTitle.text = todoItem[indexPath.row].title
-     
+        let cell: UITableViewCell = todoTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = todoItem[indexPath.row].title
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return todoItem.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = todoTable.dequeueReusableCell(withIdentifier: TodoTableCell.cellId, for: indexPath) as! TodoTableCell
+//
+//        cell.todoTitle.text = todoItem[indexPath.row].title
+//
+//        return cell
+//    }
+
+
 }
