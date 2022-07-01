@@ -18,6 +18,8 @@
 		05B5AE232869C4C20099680D /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 05B5AE222869C4C20099680D /* Then */; };
 		05B5AE262869C6610099680D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 05B5AE252869C6610099680D /* SnapKit */; };
 		05C9F66C286B1812002EC441 /* TodoTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9F66B286B1812002EC441 /* TodoTableViewModel.swift */; };
+		05C9F66F286DB711002EC441 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 05C9F66E286DB711002EC441 /* Realm */; };
+		05C9F671286DB711002EC441 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 05C9F670286DB711002EC441 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 			files = (
 				05B5AE262869C6610099680D /* SnapKit in Frameworks */,
 				05B5AE1F286976CB0099680D /* FSCalendar in Frameworks */,
+				05C9F66F286DB711002EC441 /* Realm in Frameworks */,
+				05C9F671286DB711002EC441 /* RealmSwift in Frameworks */,
 				05B5AE232869C4C20099680D /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +127,8 @@
 				05B5AE1E286976CB0099680D /* FSCalendar */,
 				05B5AE222869C4C20099680D /* Then */,
 				05B5AE252869C6610099680D /* SnapKit */,
+				05C9F66E286DB711002EC441 /* Realm */,
+				05C9F670286DB711002EC441 /* RealmSwift */,
 			);
 			productName = HeeTothedo;
 			productReference = 05B5ADFD286939E50099680D /* HeeTothedo.app */;
@@ -156,6 +162,7 @@
 				05B5AE1D286976CB0099680D /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				05B5AE212869C4C20099680D /* XCRemoteSwiftPackageReference "Then" */,
 				05B5AE242869C6610099680D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				05C9F66D286DB711002EC441 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 05B5ADFE286939E50099680D /* Products */;
 			projectDirPath = "";
@@ -424,6 +431,14 @@
 				kind = branch;
 			};
 		};
+		05C9F66D286DB711002EC441 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -441,6 +456,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 05B5AE242869C6610099680D /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		05C9F66E286DB711002EC441 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05C9F66D286DB711002EC441 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		05C9F670286DB711002EC441 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05C9F66D286DB711002EC441 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

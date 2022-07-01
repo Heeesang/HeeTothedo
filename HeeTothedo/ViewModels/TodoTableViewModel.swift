@@ -7,10 +7,3 @@
 
 import Foundation
 
-struct TodoTask{
-    
-    var id = UUID()
-    var title: String
-    var done: Bool = false
-    
-}
