@@ -28,6 +28,7 @@ class TodoViewController: UIViewController{
     
     private let plusTodoButton = UIButton().then{
         $0.setImage(UIImage(systemName: "plus.square.fill"), for: .normal)
+        $0.addTarget(self, action: #selector(addTodoItem(_:)), for: .touchUpInside )
     }
     
     private let dateFormatter = DateFormatter()
@@ -89,8 +90,9 @@ class TodoViewController: UIViewController{
     
     @objc func addTodoItem(_ sender: UIButton) {
         todoItem.append(todoTask(title: self.todoTextField.text!))
+        print(self.todoTextField.text ?? "nope")
         self.todoTextField.text = ""
-        
+        todoTable.reloadData()
     }
 }
 
