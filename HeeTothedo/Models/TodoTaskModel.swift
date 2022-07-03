@@ -6,8 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct todoTask{
-    var title: String
-    var done: Bool = false
+class todoTask: Object{
+    
+    @Persisted dynamic var title: String
+    @Persisted dynamic var done: Bool = false
+    
+    convenience init(title: String, done: Bool = false) {
+          self.init()
+          self.title = title
+          self.done = done
+      }
 }
+

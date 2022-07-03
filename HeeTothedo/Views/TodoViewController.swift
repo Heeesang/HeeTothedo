@@ -2,6 +2,7 @@ import UIKit
 import FSCalendar
 import SnapKit
 import Then
+import RealmSwift
 
 class TodoViewController: UIViewController{
     
@@ -59,6 +60,10 @@ class TodoViewController: UIViewController{
         view.addSubview(todoTable)
         setLayout()
         
+        let realm = try! Realm()
+        let saveDatas = realm.objects(todoTask.self)
+        print(saveDatas)
+        
     }
     
     func setLayout(){
@@ -89,9 +94,12 @@ class TodoViewController: UIViewController{
     }
     
     @objc func addTodoItem(_ sender: UIButton) {
+        let todoRealm = try! Realm()
+        
+        try! todoRealm.write{
+            todoRealm.add(todoTask(title: self.todoTextField.text!))
+        }
         todoItem.append(todoTask(title: self.todoTextField.text!))
-        print(self.todoTextField.text ?? "nope")
-        self.todoTextField.text = ""
         todoTable.reloadData()
     }
 }
@@ -122,12 +130,16 @@ extension TodoViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
 
 extension TodoViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoItem.count
+        let realm = try! Realm()
+        
+        return realm.objects(todoTask.self).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = todoTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = todoItem[indexPath.row].title
+        let realm = try! Realm()
+    
+        cell.textLabel?.text = realm.objects(todoTask.self)[indexPath.row].title
         return cell
     }
 }
