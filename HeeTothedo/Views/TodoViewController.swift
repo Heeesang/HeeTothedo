@@ -38,11 +38,10 @@ class TodoViewController: UIViewController{
     
     private var todoItem: [todoTask] = [todoTask(title: "잠 자기"),todoTask(title: "공부하기")]
     
-    
-    
-    
+    let realm = try! Realm()
+
     override func viewDidLoad() {
-        super .viewDidLoad()
+        super.viewDidLoad()
         
         view.backgroundColor = .white
         
@@ -63,6 +62,8 @@ class TodoViewController: UIViewController{
         let realm = try! Realm()
         let saveDatas = realm.objects(todoTask.self)
         print(saveDatas)
+        
+        print("path =  \(Realm.Configuration.defaultConfiguration.fileURL!)")
         
     }
     
@@ -86,7 +87,7 @@ class TodoViewController: UIViewController{
             $0.leading.trailing.equalToSuperview().offset(16)
         }
         plusTodoButton.snp.makeConstraints{
-            $0.left.equalTo(todoTextField.snp.right).offset(20)
+            $0.leading.equalTo(todoTextField.snp.trailing).offset(20)
             $0.top.equalTo(calendar.snp.bottom).offset(10)
             $0.height.equalTo(todoTextField.snp.height)
             $0.width.equalTo(50)
@@ -94,10 +95,9 @@ class TodoViewController: UIViewController{
     }
     
     @objc func addTodoItem(_ sender: UIButton) {
-        let todoRealm = try! Realm()
         
-        try! todoRealm.write{
-            todoRealm.add(todoTask(title: self.todoTextField.text!))
+        try! realm.write{
+            realm.add(todoTask(title: self.todoTextField.text!))
         }
         todoItem.append(todoTask(title: self.todoTextField.text!))
         todoTable.reloadData()
@@ -130,15 +130,11 @@ extension TodoViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
 
 extension TodoViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let realm = try! Realm()
-        
         return realm.objects(todoTask.self).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = todoTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let realm = try! Realm()
-    
         cell.textLabel?.text = realm.objects(todoTask.self)[indexPath.row].title
         return cell
     }
